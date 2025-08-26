@@ -10,7 +10,7 @@ for (let img of imgs) {
 
 carousel.innerHTML += carousel.innerHTML;
 
-const speed = 50; // px / sec
+const speed = 20; // px / sec
 const duration = totalWidth / speed;
 
 carousel.style.animationName = "scroll";

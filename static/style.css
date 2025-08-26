@@ -43,7 +43,7 @@ div#carousel-track {
 
 div#art-grid {
 		display: grid;
-		grid-template-columns: 290px 290px 290px 290px;
+		grid-template-columns: 270px 270px 270px 270px;
 }
 
 .gallery-item {
@@ -54,7 +54,7 @@ div#art-grid {
 }
 
 .gallery-item > img {
-		max-width: 20vw;
+		max-width: 220px;
 }
 
 .gallery-item > * {

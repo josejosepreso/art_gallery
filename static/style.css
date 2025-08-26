@@ -4,7 +4,10 @@
 }
 
 body {
+		display: flex;
 		overflow-x: hidden;
+		justify-content: center;
+		align-items: center;
 }
 
 div#main {
@@ -13,7 +16,7 @@ div#main {
 		justify-content: center;
 		align-items: center;
 		overflow: hidden;
-		width: 100vw;
+		width: 80vw;
 }
 
 div#carousel-track {
@@ -32,6 +35,10 @@ div#carousel-track {
 		to {
 				transform: translateX(-50%);
 		}
+}
+
+.carousel-img {
+		flex: "0 0 100px";
 }
 
 div#art-grid {
@@ -60,9 +67,23 @@ img#landing {
 }
 
 div#header {
+		display: flex;
+		justify-content: space-between;
 		margin: 25px 0;
 		width: 100%;
-		padding-left: 75px;
+}
+
+div#accounts {
+		self-justify: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+}
+
+div#accounts a {
+		border: 1px solid black;
+		margin: 0 5px;
+		padding: 2px 5px;
 }
 
 div#header h2 {
@@ -77,13 +98,12 @@ div#categories {
 }
 
 div#categories a {
-		font-size: 1.1rem;
+		font-size: 17px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		padding: 4px 5px;
 		border: 1px solid black;
-		border-radius: 3px;
 		margin: 0 10px;
 		text-decoration: none;
 		color: black;

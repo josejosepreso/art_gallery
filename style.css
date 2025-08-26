@@ -1,0 +1,118 @@
+* {
+		margin: 0;
+		padding: 0;
+}
+
+body {
+		overflow-x: hidden;
+}
+
+div#main {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		width: 100vw;
+}
+
+div#carousel-track {
+		display: flex;
+		width: max-content;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		align-self: start;
+		margin-top: 20px;
+}
+
+@keyframes scroll {
+		from {
+				transform: translateX(0);
+		}
+		to {
+				transform: translateX(-50%);
+		}
+}
+
+div#art-grid {
+		display: grid;
+		grid-template-columns: 290px 290px 290px 290px;
+}
+
+.gallery-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 2em;
+}
+
+.gallery-item > img {
+		max-width: 20vw;
+}
+
+.gallery-item > * {
+		margin-top: 5px;
+}
+
+img#landing {
+		width: 100vw;
+		margin-bottom: 50px;
+}
+
+div#header {
+		margin: 25px 0;
+		width: 100%;
+		padding-left: 75px;
+}
+
+div#header h2 {
+		text-decoration: underline;
+		margin-bottom: 15px;
+}
+
+div#categories {
+		display: flex;
+		margin-top: 10px;
+		margin-bottom: 50px;
+}
+
+div#categories a {
+		font-size: 1.1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 4px 5px;
+		border: 1px solid black;
+		border-radius: 3px;
+		margin: 0 10px;
+		text-decoration: none;
+		color: black;
+		cursor: pointer;
+}
+
+div#navlinks {
+		display: flex;
+}
+
+div#navlinks a {
+		margin: 0 15px;
+		text-decoration: none;
+		color: black;
+}
+
+.home-card {
+		border-left: 2px black solid;
+		padding-left: 10px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 30px;
+}
+
+div#cards {
+		display: grid;
+		grid-template-columns: 250px 250px 250px;
+		margin-top: 70px;
+		margin-bottom: 50px;
+}

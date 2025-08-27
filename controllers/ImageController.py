@@ -4,7 +4,7 @@ N_SHOW_IMAGES = 8;
 
 class ImageController:
 	@staticmethod
-	def get_all(filter: str = None, page: int = 1):
+	def get_imgs(filter: str = None, page: int = 1):
 		data = None
 		try:
 			with open("db/imgs.json", "r") as f:
@@ -16,5 +16,9 @@ class ImageController:
 		return data[ N_SHOW_IMAGES * (page - 1) : N_SHOW_IMAGES * page ]
 
 	@staticmethod
+	def get_all():
+		return ImageController.get_imgs(None, -1)
+
+	@staticmethod
 	def get_count(filter: str = None):
-		return len(ImageController.get_all(filter, -1))
+		return len(ImageController.get_all())

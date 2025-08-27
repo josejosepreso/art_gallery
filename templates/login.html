@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<style>
+	form input {
+			margin-bottom: 15px;
+			padding: 4px 5px;
+			border: 1px solid gray;
+	}
+	form label {
+			margin-bottom: 5px;
+	}
+</style>
+<div style="width:20vw;display:flex;flex-direction:column;justify-content:center;height:70vh">
+	<h2>Login</h2>
+	<form action="/auth" method="POST" style="margin-top:45px;display:flex;flex-direction:column;">
+		<label for="username">Username</label>
+		<input value="Admin" id="username" name="username" type="text" disabled />
+		<label for="pass">Password</label>
+		<input id="pass" name="password" type="password" required />
+		<input value="Login" type="submit"/>
+	</form>
+	{% if msg %}
+		<div style="display:flex;justify-content:center;padding:4px 5px;background:red;color:white;">{{ msg }}</div>
+	{% endif %}
+</div>
+
+{% endblock %}

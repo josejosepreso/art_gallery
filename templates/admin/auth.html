@@ -1,0 +1,10 @@
+<html>
+	{% if token %}
+		<script>
+			localStorage.setItem("token", "{{ token }}");
+		</script>
+	{% endif %}
+	<script>
+		window.location.replace("/");
+	</script>
+</html>

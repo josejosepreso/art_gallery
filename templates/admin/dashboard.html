@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% if images %}
+	<style>
+		table {
+				width: 100%;
+				border-collapse: collapse;
+		}
+		th, td {
+				border: 1px solid #ddd;
+				padding: 8px;
+				text-align: center;
+		}
+		th {
+				background-color: #f2f2f2;
+		}
+		td:nth-child(1) {
+				width: 150px;
+		}
+		td:nth-child(2) {
+				width: 250px;
+		}
+		td:nth-child(3) {
+				width: 100px;
+		}
+		td:nth-child(4) {
+				width: 150px;
+		}
+		td:nth-child(5) {
+				width: 70px;
+		}
+		img {
+				max-width: 100px;
+				height: auto;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Filename</th>
+				<th>Price</th>
+				<th>Category</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for image in images %}
+				<tr>
+					<td><img src="static/img/{{ image.filename }}" alt="{{ image.filename }}"/></td>
+					<td>{{ image.filename }}</td>
+					<td>{{ image.price }}</td>
+					<td>{{ image.category }}</td>
+					<td><a id="{{ image.filename }}" class="delete-btn">Delete</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<script>
+		const tokenArg = window.location.href.match(/\?token=.*/g);
+		if (tokenArg) {
+			const token = tokenArg[0].split("=")[1];
+			document.querySelectorAll("a.delete-btn").forEach(a => a.href = `/delete?filename=${ a.id }&token=${ token }`);
+		}
+	</script>
+{% endif %}
+
+{% endblock %}

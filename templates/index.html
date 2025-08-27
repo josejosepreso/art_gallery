@@ -2,51 +2,37 @@
 
 {% block body %}
 
-<div id="main">
-	<div id="header">
-		<div>
-			<h2>Art page</h2>
-			<div id="navlinks">
-				<a href="#">Home</a>
-				<a href="#">About</a>
+<img id="landing" src="static/img/02.jpg">
+<div id="categories">
+	<a href="#">Landscapes</a>
+	<a href="#">Paintings</a>
+	<a href="#">Modern art</a>
+	<a href="#">Abstract art</a>
+	<a href="#">Sculpture</a>
+</div>
+<h1 style="">Celebrate 15 Years of Discovering Art You Love</h1>
+<div id="carousel-track">
+	{% if images %}
+		{% for image in all_images %}
+			<div>
+				<img style="flex:0 0 100px;max-width:220px;margin:10px;" class="carousel-img" src="/static/img/{{ image.filename }}"/>
 			</div>
-		</div>
-		<div id="accounts">
-			<a>Login</a>
-		</div>
-	</div>
-	<img id="landing" src="static/img/02.jpg">
-	<div id="categories">
-		<a href="#">Landscapes</a>
-		<a href="#">Paintings</a>
-		<a href="#">Modern art</a>
-		<a href="#">Abstract art</a>
-		<a href="#">Sculpture</a>
-	</div>
-	<h1 style="">Celebrate 15 Years of Discovering Art You Love</h1>
-  <div id="carousel-track">
-		{% if images %}
-			{% for image in all_images %}
-				<div>
-					<img style="flex:0 0 100px;max-width:220px;margin:10px;" class="carousel-img" src="/static/img/{{ image.filename }}"/>
-				</div>
-			{% endfor %}
-		{% endif %}
-  </div>
-	<div id="cards"></div>
-	<div id="art-grid">
-		{% if images %}
-			{% for image in images %}
-				<div class="gallery-item">
-					<img src="/static/img/{{ image.filename }}"/>
-					<h3>${{ image.price }}</h3>
-					<a href="#">Explore the Best Art of the Season</a>
-				</div>
-			{% endfor %}
-		{% endif %}
-	</div>
-	<div id="pages">
-	</div>
+		{% endfor %}
+	{% endif %}
+</div>
+<div id="cards"></div>
+<div id="art-grid">
+	{% if images %}
+		{% for image in images %}
+			<div class="gallery-item">
+				<img src="/static/img/{{ image.filename }}"/>
+				<h3>${{ image.price }}</h3>
+				<a href="#">Explore the Best Art of the Season</a>
+			</div>
+		{% endfor %}
+	{% endif %}
+</div>
+<div id="pages">
 </div>
 <script src="/static/js/Card.js"></script>
 <script src="/static/js/main.js"></script>
@@ -59,7 +45,7 @@
 	if (page_arg)
 		page = parseInt(page_arg[0].split("=")[1])
 
-	const pageBtn = (n) => {
+	function pageBtn(n) {
 		const a = document.createElement("a");
 		a.innerText = n;
 		a.href = `/?p=${ n }#art-grid`;

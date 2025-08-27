@@ -16,6 +16,10 @@ class ImageController:
 		return data[ N_SHOW_IMAGES * (page - 1) : N_SHOW_IMAGES * page ]
 
 	@staticmethod
+	def get_imgs_count(filter: str = None, page: int = 1):
+		return ImageController.get_imgs(filter, page), ImageController.get_count(filter)
+
+	@staticmethod
 	def get_all():
 		return ImageController.get_imgs(None, -1)
 

@@ -36,6 +36,10 @@
 				height: auto;
 		}
 	</style>
+	<div style="margin-bottom:10px;width:90%;display:flex;justify-content:space-between;">
+		<h2>All images</h2>
+		<a id="add_new">Add new</a>
+	</div>
 	<table>
 		<thead>
 			<tr>
@@ -58,12 +62,24 @@
 			{% endfor %}
 		</tbody>
 	</table>
+	<div id="pages"></div>
 	<script>
-		const tokenArg = window.location.href.match(/\?token=.*/g);
+		const href = window.location.href;
+		const tokenArg = href.match(/\??token=.*/g);
 		if (tokenArg) {
 			const token = tokenArg[0].split("=")[1];
+			document.querySelector("a#add_new").href = `/add_new_image?token=${ token }`;
 			document.querySelectorAll("a.delete-btn").forEach(a => a.href = `/delete?filename=${ a.id }&token=${ token }`);
 		}
+	</script>
+	<script src="/static/js/pagination.js"></script>
+	<script>
+		const N_SHOW = 8;
+		const n_imgs = {{ n_images }};
+
+		const pagesShow = Math.ceil((n_imgs + 1) / N_SHOW);
+
+		setPagination(pagesShow);
 	</script>
 {% endif %}
 

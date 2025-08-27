@@ -142,3 +142,31 @@ div#cards {
 div#pages {
 		margin: 10px 0;
 }
+
+@media (max-width: 600px) {
+		div#categories {
+				flex-direction: column;
+		}
+
+		div#carousel-track {
+				display: none;
+		}
+
+		div#categories a {
+				margin-bottom: 5px;
+		}
+
+		div#cards {
+				display: flex;
+				flex-direction: column;
+		}
+
+		div#art-grid {
+				display: flex;
+				flex-direction: column;
+		}
+
+		.gallery-item {
+				margin-bottom: 5px;
+		}
+}

@@ -11,9 +11,8 @@ def root():
 	if p:
 		page = int(p)
 
-	imgs = ImageController.get_imgs(None, page)
+	imgs, n_imgs = ImageController.get_imgs_count(None, page)
 	all_imgs = ImageController.get_all()
-	n_imgs = ImageController.get_count()
 
 	return render_template("index.html", images = imgs, n_images = n_imgs, all_images = all_imgs)
 

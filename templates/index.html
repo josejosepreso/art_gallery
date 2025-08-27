@@ -7,13 +7,12 @@
 		<div>
 			<h2>Art page</h2>
 			<div id="navlinks">
-				<a href="#">Paintings</a>
-				<a href="#">Photography</a>
+				<a href="#">Home</a>
+				<a href="#">About</a>
 			</div>
 		</div>
 		<div id="accounts">
 			<a>Login</a>
-			<a>Register</a>
 		</div>
 	</div>
 	<img id="landing" src="static/img/02.jpg">
@@ -27,7 +26,7 @@
 	<h1 style="">Celebrate 15 Years of Discovering Art You Love</h1>
   <div id="carousel-track">
 		{% if images %}
-			{% for image in images %}
+			{% for image in all_images %}
 				<div>
 					<img style="flex:0 0 100px;max-width:220px;margin:10px;" class="carousel-img" src="/static/img/{{ image.filename }}"/>
 				</div>
@@ -46,8 +45,37 @@
 			{% endfor %}
 		{% endif %}
 	</div>
+	<div id="pages">
+	</div>
 </div>
 <script src="/static/js/Card.js"></script>
 <script src="/static/js/main.js"></script>
+<script>
+	const N_SHOW = 8;
+	const n_imgs = {{ n_images }};
+
+	const page_arg = window.location.href.match(/\?p=\d+/g);
+	let page = 1;
+	if (page_arg)
+		page = parseInt(page_arg[0].split("=")[1])
+
+	const pageBtn = (n) => {
+		const a = document.createElement("a");
+		a.innerText = n;
+		a.href = `/?p=${ n }#art-grid`;
+		a.style.margin = "0 3px";
+		if (page == n) {
+			a.style.fontWeight = "bold";
+			a.style.color = "red";
+		}
+		return a;
+	}
+
+	const pages = document.querySelector("div#pages");
+	const pagesShow = Math.ceil((n_imgs + 1) / N_SHOW);
+
+	for (let i = 1; i < pagesShow; ++i)
+		pages.appendChild(pageBtn(i));
+</script>
 
 {% endblock %}

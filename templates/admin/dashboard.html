@@ -57,7 +57,7 @@
 					<td>{{ image.filename }}</td>
 					<td>{{ image.price }}</td>
 					<td>{{ image.category }}</td>
-					<td><a id="{{ image.filename }}" class="delete-btn">Edit</a></td>
+					<td><a id="{{ image.filename }}" class="delete-btn">Delete</a></td>
 				</tr>
 			{% endfor %}
 		</tbody>
@@ -69,7 +69,7 @@
 		if (tokenArg) {
 			const token = tokenArg[0].split("=")[1];
 			document.querySelector("a#add_new").href = `/add_new_image?token=${ token }`;
-			document.querySelectorAll("a.delete-btn").forEach(a => a.href = `/dashboard/edit?filename=${ a.id }&token=${ token }`);
+			document.querySelectorAll("a.delete-btn").forEach(a => a.href = `/dashboard/delete?filename=${ a.id }&token=${ token }`);
 		}
 	</script>
 	<script src="/static/js/pagination.js"></script>

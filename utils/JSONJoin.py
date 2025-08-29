@@ -11,9 +11,4 @@ class JSONJoin:
 		if alias is None:
 			alias = field
 
-		result = []
-		for entry in jsonA:
-			entry[alias] = lookup[entry[field]]
-			result.append(entry)
-
-		return result
+		return list(map(lambda entry: { **entry, alias: lookup[entry[field]] }, jsonA))

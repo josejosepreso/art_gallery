@@ -44,6 +44,19 @@ def dashboard():
 
 	return render_template("admin/dashboard.html", images = imgs, n_images = n_imgs)
 
+@admin.route("/dashboard/delete", methods = ["POST", "GET"])
+@validateadmin
+def delete_img():
+	filename = request.args.get("filename")
+
+	href = f"/dashboard?p=1&token={ request.args.get('token') }"
+	if not filename:
+		return redirect(href)
+
+	deleted = AdminController.delete_img(filename)
+
+	return redirect(href)
+
 @admin.route("/add_new_image")
 @validateadmin
 def add_new_image():

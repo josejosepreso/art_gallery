@@ -1,4 +1,4 @@
-function checkAdmin() {
+(function() {
 	const token = localStorage.getItem("token");
 	if (!token)
 		return;
@@ -25,6 +25,4 @@ function checkAdmin() {
 	//
 	nav.appendChild(dashboardA);
 	nav.appendChild(messagesA);
-}
-
-checkAdmin();
+}) ();

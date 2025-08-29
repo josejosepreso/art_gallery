@@ -1,4 +1,5 @@
 function setPagination(pagesShow) {
+	console.log(pagesShow)
 	const pages = document.querySelector("div#pages");
 	if (!pages)
 		return;
@@ -26,6 +27,6 @@ function setPagination(pagesShow) {
 		return a;
 	}
 
-	for (let i = 1; i < pagesShow; ++i)
+	for (let i = 1; i < pagesShow + 1; ++i)
 		pages.appendChild(pageBtn(i));
 }

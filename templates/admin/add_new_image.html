@@ -1,5 +1,53 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<style>
+	form {
+			display: flex;
+			flex-direction: column;
+			height: 50vh;
+			justify-content: center;
+	}
+	input, select {
+			margin-bottom: 10px;
+			padding: 3px 5px;
+	}
+	a {
+			align-self: start;
+			margin-left: 20px;
+	}
+	span#msg {
+			background-color: red;
+			padding: 2px 5px;
+			color: white
+	}
+</style>
+<a id="back" href="/dashboard">Back</a>
+<form method="POST" action="/add_new_image/upload" enctype="multipart/form-data">
+	<label for="file">File</label>
+	<input id="file" name="file" type="file" required />
+	<label for="cat">Category</label>
+	<select name="cat" id="cat">
+		<option value="0">Select category</option>
+		<option value="1">Landscape</option>
+		<option value="2">Painting</option>
+	</select>
+	<input value="Upload" type="submit" />
+
+{% if msg %}
+	<span id="msg" >{{ msg }}</span>
+{% endif %}
+
+</form>
+<script>
+	let args = window.location.href.match(/\?token=.*&?/g);
+	if (args) {
+		const arg = args[0];
+		const back = document.querySelector("a#back");
+		const form = document.querySelector("form");
+		back.href += arg;
+		form.action += arg;
+	}
+</script>
 
 {% endblock %}

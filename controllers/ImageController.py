@@ -10,7 +10,7 @@ class ImageController:
 			with open("db/imgs.json", "r") as f:
 				data = json.load(f)
 		except Exception:
-				pass
+				return []
 		if page == -1:
 			return data
 		return data[ N_SHOW_IMAGES * (page - 1) : N_SHOW_IMAGES * page ]

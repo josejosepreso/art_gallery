@@ -63,8 +63,6 @@ def upload():
 
 	saved = AdminController.save_image(file, cat, price)
 
-	print(saved)
-
 	return redirect(f"/dashboard?p=1&token={ request.args.get('token') }") \
 		if saved \
 		else render_template("admin/add_new_image.html", msg = "Error")
